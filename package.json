@@ -9,9 +9,13 @@
   "author": "dumbmoron <log@riseup.net>",
   "license": "AGPL-3.0",
   "private": false,
+  "scripts": {
+    "postinstall": "[[ $(uname -s) != Linux ]] || [[ $npm_execpath != */bin/bun ]] || ([ -f node_modules/syscall-napi/build ] || cd node_modules/syscall-napi && bun i)"
+  },
   "dependencies": {
-    "ipaddr.js": "2.1.0",
+    "ipaddr.js": "2.3.0",
+    "node-gyp": "^12.2.0",
     "syscall-napi": "0.0.6",
-    "undici": "^5.27.0"
+    "undici": "^6.22.0"
   }
 }

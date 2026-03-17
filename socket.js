@@ -85,7 +85,7 @@ export async function createSocketFromHostname(hostname, port, sourceIP, options
     }
 
     return createSocket(
-        host.address, port, sourceIP, 
+        host.address, port, sourceIP,
         { ...connectOptions, strict, familyMatching }
     );
 }
@@ -93,7 +93,7 @@ export async function createSocketFromHostname(hostname, port, sourceIP, options
 // `bits` defines how many bits to fill from the MSB to the LSB
 // needs to be <= length of the prefix
 export function createRandomSocket(hostname, port, localCIDR, options) {
-    const { bits, ...rest } = options;
+    const { bits, ...rest } = options || {};
     const addr = generateRandomIP(localCIDR, bits);
     return createSocketFromHostname(hostname, port, addr, rest);
 }
